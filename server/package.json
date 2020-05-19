@@ -12,7 +12,8 @@
     "express-pino-logger": "^5.0.0",
     "nodemon": "^2.0.4",
     "pg": "^8.2.1",
-    "pino": "^6.2.1"
+    "pino": "^6.2.1",
+    "pino-pretty": "^4.0.0"
   },
   "scripts": {
     "start": "nodemon server"
