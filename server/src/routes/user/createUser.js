@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-router.post("/:id", checkJwt, (req, res) => {
+router.post("/:id", (req, res) => {
 
     return res.status(200);
 });

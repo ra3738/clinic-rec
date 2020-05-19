@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const createUserRoute = require('./users/createUser');
-const readUserRoute = require('./users/readUser');
-const updateUserRoute = require('./users/updateUser');
-const deleteUserRoute = require('./users/deleteUser');
+const createUserRoute = require('./user/createUser');
+const readUserRoute = require('./user/readUser');
+const updateUserRoute = require('./user/updateUser');
+const deleteUserRoute = require('./user/deleteUser');
 const { USER_ROUTE } = require('../utils/constants');
 
 router.use(USER_ROUTE, createUserRoute);

@@ -19,7 +19,7 @@ const userRouter = require('./routes/userRouter');
 
 app.use(BASE_ROUTE, userRouter);
 
-if (ENVIRONMENT === 'production' || environment === 'dev') {
+if (ENVIRONMENT === 'production' || ENVIRONMENT === 'dev') {
   app.use('/static', express.static(path.join(`${__dirname}/../../`, 'client/build/static' )));
 
   app.get('*', (req, res) => {
