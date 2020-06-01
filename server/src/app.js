@@ -6,10 +6,10 @@ const logger = require('./utils/logger');
 const { ENVIRONMENT } = require('./utils/constants');
 const DB  = require('pg').Client
 const dbInstance = new DB({
-  user: "admin",
+  user: "postgres",
   password: "password",
   port: 5432, 
-  database: "clinicrecdb"
+  database: "postgres"
 })
 dbInstance.connect()
 .then(() => console.log("Connected to DB"))
