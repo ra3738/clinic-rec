@@ -10,6 +10,9 @@
 # testing
 /coverage
 
+#remove pg data
+/pg
+
 #env
 /server/.env*
 
