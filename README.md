@@ -1,3 +1,9 @@
+### Config
+Steps to run a postgres instance:
+docker-compose up -d --build (for first time) or docker-compose up -d after first time.
+To attach to the container after is running docker exec -it postgres-1 psql -U postgres
+Write sql code in the shell!
+
 ### Commits
 - Short informative messages
 - Working on your own branch always
