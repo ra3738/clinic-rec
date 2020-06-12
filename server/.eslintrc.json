@@ -31,7 +31,6 @@
         "arrow-parens": ["error", "as-needed"],
         "object-curly-newline": "off",
         "no-underscore-dangle": "off",
-        "react/forbid-prop-types": "off",
         "no-plusplus": "off",
         "linebreak-style": 0
     },
