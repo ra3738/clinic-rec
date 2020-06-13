@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const {CLINIC_ROUTE} = require('../utils/constants');
-const getClinicsInCity = require('./clinics/getClinicsInCity');
+const getClinicDetailsInCity = require('./clinics/getClinicDetailsInCity');
 
-router.use(CLINIC_ROUTE, getClinicsInCity);
+router.use(CLINIC_ROUTE, getClinicDetailsInCity);
 
 module.exports = router;

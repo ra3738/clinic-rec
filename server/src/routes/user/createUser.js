@@ -1,8 +1,8 @@
 const router = require('express').Router();
 
-router.get("/:id", (req, res) => {
+router.post("/:id", (req, res) => {
 
-    return res.send(200);
+    return res.status(200);
 });
 
 module.exports = router;
