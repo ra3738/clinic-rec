@@ -16,8 +16,9 @@ app.use(express.json());
 
 const { BASE_ROUTE } = require('./utils/constants');
 const userRouter = require('./routes/userRouter');
-
+const clinicRouter = require('./routes/clinicRouter')
 app.use(BASE_ROUTE, userRouter);
+app.use(BASE_ROUTE, clinicRouter );
 
 if (ENVIRONMENT === 'production' || ENVIRONMENT === 'dev') {
   app.use('/static', express.static(path.join(`${__dirname}/../../`, 'client/build/static' )));
