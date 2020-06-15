@@ -8,7 +8,7 @@ import { getPatient, createPatient } from '../redux/actions/patientActions';
 import colors from '../constants/colors';
 import TextResponse from './common/TextResponse';
 import LoadingMessage from './common/LoadingMesage';
-import URN_CLIENT from '../constants/config';
+import { URN_CLIENT } from '../constants/config';
 
 const useStyles = makeStyles(theme => ({
   content: {
@@ -22,13 +22,9 @@ const AuthenticatedApp = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { getTokenSilently, user } = useAuth0();
-  const userState = useSelector(state => state.user);
+  const patientState = useSelector(state => state.patients);
 
-  if (userState === undefined) {
-    return <TextResponse heading='Technical issue...' body='Please contact administrator' />;
-  }
-
-  if (userState.id === null && !userState.isFetching) {
+  if (patientState.id === null && !patientState.isFetching) {
     if (!user) {
       return <TextResponse heading='No user found.' body='Please contact administrator' />;
     }
@@ -44,10 +40,10 @@ const AuthenticatedApp = () => {
 
     return <LoadingMessage heading='Please wait' body='Loading patient...' />;
   }
-  if (userState.didInvalidate) {
+  if (patientState.didInvalidate) {
     return <TextResponse heading='Error getting user info from server' body='Please contact administrator.' />;
   }
-  if (userState.isFetching) {
+  if (patientState.isFetching) {
     return <LoadingMessage heading='Please wait' body='Loading patient...' />;
   }
 
