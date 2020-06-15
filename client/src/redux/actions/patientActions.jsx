@@ -24,7 +24,7 @@ export const createPatient = async (dispatch, patientId, username, getTokenCb) =
   const token = await getTokenCb();
   dispatch(requestPatient(dispatch));
 
-  axios.post(`/api/users/${patientId}`, { username }, { headers: { Authorization: `Bearer ${token}` } })
+  axios.post(`/api/users/patient/${patientId}`, { username }, { headers: { Authorization: `Bearer ${token}` } })
     .then(
       response => {
         dispatch(receivePatient(response));
@@ -41,7 +41,7 @@ export const getPatient = async (dispatch, patientId, getTokenCb) => {
 
   dispatch(requestPatient(dispatch));
 
-  axios.get(`/api/users/${patientId}`, { headers: { Authorization: `Bearer ${token}` } })
+  axios.get(`/api/users/patient/${patientId}`, { headers: { Authorization: `Bearer ${token}` } })
     .then(
       response => {
         dispatch(receivePatient(response));
