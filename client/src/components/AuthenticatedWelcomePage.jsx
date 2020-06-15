@@ -1,6 +1,6 @@
 import React from 'react';
 import createHistory from 'history/createBrowserHistory';
-import { Grid, Box, Button } from '@material-ui/core';
+import { Grid, Button } from '@material-ui/core';
 import TextResponse from './common/TextResponse';
 
 const AuthenticatedWelcomePage = () => {

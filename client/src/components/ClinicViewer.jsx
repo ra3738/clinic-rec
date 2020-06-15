@@ -1,25 +1,13 @@
-import React, { Component } from 'react';
-import {Button, Paper, Grid, Typography, InputBase, ListItem, List, ListItemText, Divider} from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react';
+import {Button, Grid, ListItem, List, ListItemText, Divider} from '@material-ui/core';
 import TextResponse from './common/TextResponse';
 import { TextField } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
 import LoadingMessage from './common/LoadingMesage';
 import { getClinics } from '../redux/actions/clinicActions';
 
-const useStyles = makeStyles((theme) => ({
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center'
-    },
-    searchBox: {
-       align: 'center'
-    }
-  }));
 
 const ClinicViewer = () => {
-    const classes = useStyles(); 
     const clinicsState = useSelector(state => state.clinics); 
     const dispatch  = useDispatch(); 
     const [cityName, setCityName] = React.useState('');

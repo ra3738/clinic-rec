@@ -1,5 +1,5 @@
 
-import { INVALIDATE_CLINICS, REQUEST_CLINICS, RECEIVE_CLINICS, UPDATE_CITY } from '../actions/clinicActions';
+import { INVALIDATE_CLINICS, REQUEST_CLINICS, RECEIVE_CLINICS } from '../actions/clinicActions';
 
 const initialState = {
   isFetchingClinics: false,
