@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {URN_SERVER} from '../constants/config';
+import { URN_SERVER } from '../constants/config';
 
 
 const axiosInstance = axios.create({

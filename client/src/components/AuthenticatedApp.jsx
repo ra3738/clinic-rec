@@ -25,7 +25,6 @@ const AuthenticatedApp = () => {
   const { getTokenSilently, user } = useAuth0();
   const patientState = useSelector(state => state.patients);
 
-
   if (patientState.id === null && !patientState.isFetching) {
     if (!user) {
       return <TextResponse heading='No user found.' body='Please contact administrator' />;
