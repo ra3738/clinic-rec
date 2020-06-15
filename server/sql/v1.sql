@@ -1,3 +1,27 @@
+-- Change Log:
+-- Roman - 2020-06-13
+-- Medical_History - change type of id to SERIAL from CHAR
+-- Patient - change type of id to SERIAL from CHAR
+-- Doctor - change type of id to SERIAL from CHAR
+-- As well as every table that refers to those
+
+DROP TABLE IF EXISTS Specialty CASCADE;
+DROP TABLE IF EXISTS Medical_History CASCADE;
+DROP TABLE IF EXISTS Patient CASCADE;
+DROP TABLE IF EXISTS ClinicLocation CASCADE;
+DROP TABLE IF EXISTS Clinic CASCADE;
+DROP TABLE IF EXISTS Doctor CASCADE;
+DROP TABLE IF EXISTS Rating CASCADE;
+DROP TABLE IF EXISTS Specializes CASCADE;
+DROP TABLE IF EXISTS Bill CASCADE;
+DROP TABLE IF EXISTS Allergies CASCADE;
+DROP TABLE IF EXISTS Surgeries CASCADE;
+DROP TABLE IF EXISTS Prescription CASCADE;
+DROP TABLE IF EXISTS DoctorRoom CASCADE;
+DROP TABLE IF EXISTS PrescriptionForAppointment CASCADE;
+DROP TABLE IF EXISTS Appointment CASCADE;
+DROP TABLE IF EXISTS Medicine CASCADE;
+DROP TABLE IF EXISTS PrescriptionConsistsOfMedicine CASCADE;
 
 CREATE TABLE Specialty(
   name VARCHAR(30) PRIMARY KEY DEFAULT 'Undetermined'
@@ -10,25 +34,25 @@ INSERT INTO Specialty VALUES
 ('Gynecology');
 
 CREATE TABLE Medical_History(
-    id CHAR(36), 
+    id SERIAL, 
     guardian_name VARCHAR(20), 
     height INTEGER, 
     weight INTEGER,
-    date_created Date, 
+    date_created TIMESTAMP, 
     PRIMARY KEY(id) 
 );
 INSERT INTO Medical_History
- (id, guardian_name, height, weight, date_created)
+ (guardian_name, height, weight, date_created)
 VALUES
-  ('0001', 'Hazra Imran', 190, 90, '1998-11-15'),
-  ('0002', 'Chuck Norris', 189, 89, '1980-05-30'),
-  ('0003', 'Vladimir Putin', 188, 88, '1950-12-12'),
-  ('0004', 'Jeff Bezos', 187, 87, '1940-03-04'),
-  ('0005', 'Bernie Sanders', 186, 69, '1995-09-14');
+  ('Hazra Imran', 190, 90, '1998-11-15'),
+  ('Chuck Norris', 189, 89, '1980-05-30'),
+  ('Vladimir Putin', 188, 88, '1950-12-12'),
+  ('Jeff Bezos', 187, 87, '1940-03-04'),
+  ('Bernie Sanders', 186, 69, '1995-09-14');
 
 CREATE TABLE Patient(
-    id CHAR(36) UNIQUE, -- because of  ERROR:  there is no unique constraint matching given keys for referenced table "patient"
-    mid CHAR(36) NOT NULL , 
+    id CHAR(24) UNIQUE, -- because of  ERROR:  there is no unique constraint matching given keys for referenced table "patient"
+    mid SERIAL NOT NULL , 
     email VARCHAR(20),
     password VARCHAR(20),
     full_name VARCHAR(20),
@@ -36,12 +60,13 @@ CREATE TABLE Patient(
     PRIMARY KEY(id, mid), 
     FOREIGN KEY(mid) REFERENCES Medical_History(id)
 );
-INSERT INTO Patient VALUES
-  ('0001', '0001', 'roman@akhtariev.ca', 'MyTAIsTheBest', 'Roman Akhtariev', 'https://google.com/images/roman'),
-  ('0002', '0002', 'james@bond.ca', 'triple0777', 'James Bond', 'https://google.com/images/bond'),
-  ('0003', '0003', 'donald@trump.us', 'buildThatWall', 'Donald Trump', 'https://google.com/images/trump'),
-  ('0004', '0004', 'bill@gates.com', 'microsoft', 'Bill', 'https://google.com/images/gates'),
-  ('0005', '0005', 'jb@ubc.ca', 'Baaaby', 'Justin Bieber', 'https://google.com/images/bieber');
+INSERT INTO Patient
+VALUES
+  ('0001', 1, 'roman@akhtariev.ca', 'MyTAIsTheBest', 'Roman Akhtariev', 'https://google.com/images/roman'),
+  ('0002', 2, 'james@bond.ca', 'triple0777', 'James Bond', 'https://google.com/images/bond'),
+  ('0003', 3, 'donald@trump.us', 'buildThatWall', 'Donald Trump', 'https://google.com/images/trump'),
+  ('0004', 4, 'bill@gates.com', 'microsoft', 'Bill', 'https://google.com/images/gates'),
+  ('0005', 5, 'jb@ubc.ca', 'Baaaby', 'Justin Bieber', 'https://google.com/images/bieber');
   
 CREATE TABLE ClinicLocation (
 postal_code CHAR(7) PRIMARY KEY, 
@@ -69,7 +94,7 @@ INSERT INTO Clinic VALUES('0004', 'ClinicD', '8:00', '16:00', 'Mon-Fri','V6T AB5
 INSERT INTO Clinic VALUES('0005', 'ClinicE', '8:00', '15:00', 'Mon-Fri','V6T WA4');
 
 CREATE TABLE Doctor(
-    id CHAR(36) PRIMARY KEY,
+    id CHAR(24) PRIMARY KEY,
     email VARCHAR(36),
     password VARCHAR(36),
     full_name VARCHAR(36),
@@ -90,7 +115,7 @@ CREATE TABLE Rating(
     id CHAR(36) PRIMARY KEY,
     description VARCHAR(255),
     stars INTEGER,
-    did CHAR(36) NOT NULL,
+    did CHAR(24) NOT NULL,
     FOREIGN KEY(did) REFERENCES Doctor(id) ON DELETE CASCADE
 );
 
@@ -103,7 +128,7 @@ INSERT INTO Rating VALUES
 
 CREATE TABLE Specializes(
   name VARCHAR(30) DEFAULT 'Undetermined',
-  did CHAR(36),
+  did CHAR(24),
   years_of_experience INTEGER,
   PRIMARY KEY(name, did),
   FOREIGN KEY(name) REFERENCES Specialty(name),
@@ -124,7 +149,7 @@ created_date DATE,
 due_date DATE,
 paid_date DATE,
 clinic_id CHAR(36) NOT NULL, 
-patient_id CHAR(36)  NOT NULL, 
+patient_id CHAR(24)  NOT NULL, 
 FOREIGN KEY(clinic_id) REFERENCES Clinic(id),
 FOREIGN KEY(patient_id) REFERENCES Patient(id)); 
 
@@ -137,22 +162,22 @@ INSERT INTO Bill VALUES
 
 CREATE TABLE Allergies(
     name VARCHAR(30),
-    mid CHAR(36), 
+    mid SERIAL, 
     date DATE,
     comments VARCHAR(255),
     PRIMARY KEY(name, date, mid), 
     FOREIGN KEY(mid) REFERENCES Medical_History(id) ON DELETE CASCADE);
 
 INSERT INTO Allergies VALUES
-  ('Hillary Clinton Allergy', '0003', '2010-11-15', 'May kill if gets out of hand'),
-  ('Nasal Allergy', '0005', '2018-12-03', 'Difficulty breathing during congestion'),
-  ('Pollen Allergy', '0005', '2005-03-09', 'Aggravates in spring'),
-  ('Peanut Allergy', '0004', '2000-11-02', 'Becomes red when eats'),
-  ('Asthma', '0001', '2020-05-03', 'Difficulty breathing at night');
+  ('Hillary Clinton Allergy', 3, '2010-11-15', 'May kill if gets out of hand'),
+  ('Nasal Allergy', 5, '2018-12-03', 'Difficulty breathing during congestion'),
+  ('Pollen Allergy', 5, '2005-03-09', 'Aggravates in spring'),
+  ('Peanut Allergy', 4, '2000-11-02', 'Becomes red when eats'),
+  ('Asthma', 1, '2020-05-03', 'Difficulty breathing at night');
   
 CREATE TABLE Surgeries(
     name VARCHAR(30), 
-    mid CHAR(36), 
+    mid SERIAL, 
     date DATE, 
     comments VARCHAR(255),
     PRIMARY KEY(name, date, mid),
@@ -160,16 +185,16 @@ CREATE TABLE Surgeries(
 ); 
 
 INSERT INTO Surgeries VALUES 
-('Liver surgery', '0001', '2005-05-01', 'No side effects - surgery successful'),
-('Kidney extraction', '0002', '2018-10-04', 'Successful'),
-('Tumour extraction', '0003', '2020-05-08', 'Needs follow up'),
-('Plastic surgery', '0005', '2004-05-10', 'Skin'),
-('Plastic surgery', '0005', '2014-06-01','Lips');
+('Liver surgery', 1, '2005-05-01', 'No side effects - surgery successful'),
+('Kidney extraction', 2, '2018-10-04', 'Successful'),
+('Tumour extraction', 3, '2020-05-08', 'Needs follow up'),
+('Plastic surgery', 5, '2004-05-10', 'Skin'),
+('Plastic surgery', 5, '2014-06-01','Lips');
 
 CREATE TABLE Prescription (
     id CHAR(36) PRIMARY KEY,
     comments VARCHAR(256),
-    did CHAR(36),
+    did CHAR(24),
 FOREIGN KEY(did) REFERENCES Doctor(id)
 );
 
@@ -182,7 +207,7 @@ INSERT INTO Prescription VALUES
 
 
 CREATE TABLE DoctorRoom(
-  did CHAR(36) PRIMARY KEY,
+  did CHAR(24) PRIMARY KEY,
   room_no VARCHAR(36)
 );
 
@@ -213,8 +238,8 @@ INSERT INTO PrescriptionForAppointment VALUES
 
 CREATE TABLE Appointment(
   id CHAR(36) PRIMARY KEY,
-  doctor_id CHAR(36),
-  patient_id CHAR(36),
+  doctor_id CHAR(24),
+  patient_id CHAR(24),
   start_time TIMESTAMP, 
   end_time TIMESTAMP,
   date Date,

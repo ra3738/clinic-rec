@@ -18,8 +18,10 @@ const userReducer = (state = initialState, { type, payload }) => {
         ...state,
         isFetching: false,
         didInvalidate: false,
-        id: payload._id,
-        username: payload.username,
+        id: payload.id,
+        email: payload.email,
+        mid: payload.mid,
+        profile_picture_url: payload.profile_picture_url,
       };
     case CREATE_PATIENT:
       return {
