@@ -2,24 +2,25 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Grid, Box } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import { useAuth0 } from '../authentication/react-auth0-spa';
 import { getPatient, createPatient } from '../redux/actions/patientActions';
-import colors from '../constants/colors';
 import TextResponse from './common/TextResponse';
 import LoadingMessage from './common/LoadingMesage';
-import { URN_CLIENT } from '../constants/config';
+import {URN_CLIENT} from '../constants/config';
+import ClinicViewer from './ClinicViewer';
+import AuthenticatedWelcomePage from './AuthenticatedWelcomePage';
 
-const useStyles = makeStyles(theme => ({
-  content: {
-    color: theme.palette.secondary.main,
-    backgroundColor: colors.white,
-    margin: '2% 10%',
-  },
-}));
+// const useStyles = makeStyles(theme => ({
+//   // content: {
+//   //   //color: theme.palette.primary.main,
+//   //   //backgroundColor: colors.white,
+//   //   //margin: '2% 10%'
+//   // },
+// }));
 
 const AuthenticatedApp = () => {
-  const classes = useStyles();
+  // const classes = useStyles();
   const dispatch = useDispatch();
   const { getTokenSilently, user } = useAuth0();
   const patientState = useSelector(state => state.patients);
@@ -46,23 +47,31 @@ const AuthenticatedApp = () => {
   if (patientState.isFetching) {
     return <LoadingMessage heading='Please wait' body='Loading patient...' />;
   }
-
   return (
     <>
       <Grid container>
         <Grid item sm>
-          <Box className={classes.content}>
+         <Box>
             <Switch>
+              <Route 
+               path='/'
+               exact 
+               component = {() => (<AuthenticatedWelcomePage/>)}/>
               <Route
                 path='/test'
                 exact
                 component={() => (
-                  <TextResponse
-                    startLevel='This is test'
-                    titleText='Ignore'
-                  />
+                <h1> Hello </h1> 
                 )}
               />
+              <Route
+                 path='/clinics'
+                 exact 
+                 component = { 
+                   () => (
+                     <ClinicViewer/>
+                   )
+                 }/>
             </Switch>
           </Box>
         </Grid>
