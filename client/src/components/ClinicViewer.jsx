@@ -29,6 +29,7 @@ const ClinicViewer = () => {
             return <TextResponse heading='No clinics found.' body='Please contact administrator' />;
         }
         getClinics(dispatch, cityName);
+        setCityName('');
         return <LoadingMessage heading='Please wait' body='Loading clinics...' />;
       }
   }
@@ -40,7 +41,7 @@ const ClinicViewer = () => {
  if (clinicsState.didInvalidateClinics) {
     return <TextResponse heading='Error getting clinics info from server' body='Please contact administrator.' />;
   }
-  
+
   if (clinicsState.isFetchingClinics) {
     return <LoadingMessage heading='Please wait' body='Loading clinics...' />;
   }

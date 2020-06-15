@@ -10,13 +10,14 @@ import TextResponse from './common/TextResponse';
 import LoadingMessage from './common/LoadingMesage';
 import {URN_CLIENT} from '../constants/config';
 import ClinicViewer from './ClinicViewer';
+import AuthenticatedWelcomePage from './AuthenticatedWelcomePage';
 
 const useStyles = makeStyles(theme => ({
-  content: {
-    color: theme.palette.secondary.main,
-    backgroundColor: colors.white,
-    margin: '2% 10%',
-  },
+  // content: {
+  //   //color: theme.palette.primary.main,
+  //   //backgroundColor: colors.white,
+  //   //margin: '2% 10%'
+  // },
 }));
 
 const AuthenticatedApp = () => {
@@ -24,6 +25,7 @@ const AuthenticatedApp = () => {
   const dispatch = useDispatch();
   const { getTokenSilently, user } = useAuth0();
   const patientState = useSelector(state => state.patients);
+
 
   // if (patientState.id === null && !patientState.isFetching) {
   //   if (!user) {
@@ -51,8 +53,12 @@ const AuthenticatedApp = () => {
     <>
       <Grid container>
         <Grid item sm>
-          <Box className={classes.content}>
+         <Box>
             <Switch>
+              <Route 
+               path='/'
+               exact 
+               component = {() => (<AuthenticatedWelcomePage/>)}/>
               <Route
                 path='/test'
                 exact
