@@ -23,18 +23,13 @@ const ClinicViewer = () => {
     const clinicsState = useSelector(state => state.clinics); 
     const dispatch  = useDispatch(); 
     const [cityName, setCityName] = React.useState('');
-     console.log('here');
-     console.log(clinicsState)
     const getClinicsOnClick = () => {
         if (!clinicsState.isFetchingClinics) {
         if (!clinicsState) {
             return <TextResponse heading='No clinics found.' body='Please contact administrator' />;
         }
         getClinics(dispatch, cityName);
-        // console.log('call getClinics')
-        // console.log(clinicsState);
         return <LoadingMessage heading='Please wait' body='Loading clinics...' />;
-        console.log('button clicked')
       }
   }
   const onChangeCityName = (e) => {
@@ -43,8 +38,9 @@ const ClinicViewer = () => {
 
 
  if (clinicsState.didInvalidateClinics) {
-    return <TextResponse heading='Error getting user info from server' body='Please contact administrator.' />;
+    return <TextResponse heading='Error getting clinics info from server' body='Please contact administrator.' />;
   }
+  
   if (clinicsState.isFetchingClinics) {
     return <LoadingMessage heading='Please wait' body='Loading clinics...' />;
   }
@@ -63,7 +59,8 @@ const ClinicViewer = () => {
         </Grid>
       </Grid>
       <Grid container spacing={3}> 
-       <Grid item xs={12}>
+       <Grid item xs={12}> 
+       { clinicsState.responseData !== null && 
          <List> 
           {clinicsState.responseData.map((clinic) => (
             <>
@@ -75,6 +72,7 @@ const ClinicViewer = () => {
              </>
           ))}
           </List> 
+      }
        </Grid>
       </Grid> 
     </div>

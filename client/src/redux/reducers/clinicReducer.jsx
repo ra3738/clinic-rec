@@ -4,7 +4,7 @@ import { INVALIDATE_CLINICS, REQUEST_CLINICS, RECEIVE_CLINICS, UPDATE_CITY } fro
 const initialState = {
   isFetchingClinics: false,
   didInvalidateClinics: false,
-  responseData: []
+  responseData: null 
 };
 
 const clinicReducer = (state = initialState, { type, payload }) => {
