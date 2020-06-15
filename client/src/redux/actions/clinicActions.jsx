@@ -5,6 +5,7 @@ export const GET_CLINICS = 'GET_CLINICS';
 export const RECEIVE_CLINICS = 'RECEIVE_CLINICS';
 export const REQUEST_CLINICS = 'REQUEST_CLINICS';
 export const INVALIDATE_CLINICS = 'INVALIDATE_CLINICS';
+export const UPDATE_CITY = 'UPDATE_CITY';
 
 export const requestClinics = () => ({
   type: REQUEST_CLINICS
@@ -18,6 +19,7 @@ export const receiveClinics = response => ({
 export const invalidateClinics= () => ({
     type: INVALIDATE_CLINICS
 })
+
 
 
 export const getClinics = async (dispatch, cityName) => {
