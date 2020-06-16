@@ -13,6 +13,9 @@ const AuthenticatedWelcomePage = () => {
       <Grid item xs={6}>
         <Button variant='contained' color='primary' onClick={()=> history.push('/clinics')}> Find clinics near you </Button>
       </Grid>
+      <Grid item xs={6}>
+        <Button variant='contained' color='primary' onClick={()=> history.push('/clinics')}> Find doctor ratings </Button>
+      </Grid>
     </Grid> );
 }
  
