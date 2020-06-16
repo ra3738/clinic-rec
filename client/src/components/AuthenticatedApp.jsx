@@ -2,25 +2,17 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Grid, Box } from '@material-ui/core';
-// import { makeStyles } from '@material-ui/core/styles';
 import { useAuth0 } from '../authentication/react-auth0-spa';
 import { getPatient, createPatient } from '../redux/actions/patientActions';
 import TextResponse from './common/TextResponse';
 import LoadingMessage from './common/LoadingMesage';
 import {URN_CLIENT} from '../constants/config';
 import ClinicViewer from './ClinicViewer';
+import DoctorViewer from './DoctorViewer';
 import AuthenticatedWelcomePage from './AuthenticatedWelcomePage';
 
-// const useStyles = makeStyles(theme => ({
-//   // content: {
-//   //   //color: theme.palette.primary.main,
-//   //   //backgroundColor: colors.white,
-//   //   //margin: '2% 10%'
-//   // },
-// }));
 
 const AuthenticatedApp = () => {
-  // const classes = useStyles();
   const dispatch = useDispatch();
   const { getTokenSilently, user } = useAuth0();
   const patientState = useSelector(state => state.patients);
@@ -70,6 +62,14 @@ const AuthenticatedApp = () => {
                  component = { 
                    () => (
                      <ClinicViewer/>
+                   )
+                 }/>
+              <Route
+                 path='/doctors'
+                 exact 
+                 component = { 
+                   () => (
+                     <DoctorViewer/>
                    )
                  }/>
             </Switch>
