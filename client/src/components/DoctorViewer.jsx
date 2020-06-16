@@ -42,7 +42,7 @@ const DoctorViewer = () => {
       </Grid> 
        <Grid container spacing={3} alignContent='center'>
         <Grid item xs={12}>
-          <TextField placeholder='Doctor' onChange={onChangeSpecialty} ></TextField>
+          <TextField placeholder='Specialty' onChange={onChangeSpecialty} ></TextField>
           <Button color='primary' onClick={getDoctorsOnClick}> Search </Button> 
         </Grid>
       </Grid>
