@@ -6,12 +6,11 @@ import { useAuth0 } from '../authentication/react-auth0-spa';
 import { getPatient, createPatient } from '../redux/actions/patientActions';
 import TextResponse from './common/TextResponse';
 import LoadingMessage from './common/LoadingMesage';
-import {URN_CLIENT} from '../constants/config';
+import { URN_CLIENT } from '../constants/config';
 import ClinicViewer from './ClinicViewer';
 import DoctorViewer from './DoctorViewer';
 import UserViewer from './UserViewer';
 import AuthenticatedWelcomePage from './AuthenticatedWelcomePage';
-
 
 const AuthenticatedApp = () => {
   // const dispatch = useDispatch();
@@ -26,11 +25,20 @@ const AuthenticatedApp = () => {
   //   const newPatient = user[`${namespace}/newUser`];
   //   const auth0Prefix = 'auth0|';
 
-  //   if (newPatient) {
-  //     createPatient(dispatch, user.sub.substring(auth0Prefix.length), user.nickname, getTokenSilently);
-  //   } else {
-  //     getPatient(dispatch, user.sub.substring(auth0Prefix.length), getTokenSilently);
-  //   }
+    // if (newPatient) {
+    //   createPatient(
+    //     dispatch,
+    //     user.sub.substring(auth0Prefix.length),
+    //     user.nickname,
+    //     getTokenSilently,
+    //   );
+    // } else {
+    //   getPatient(
+    //     dispatch,
+    //     user.sub.substring(auth0Prefix.length),
+    //     getTokenSilently,
+    //   );
+    // }
 
   //   return <LoadingMessage heading='Please wait' body='Loading patient...' />;
   // }
@@ -44,33 +52,35 @@ const AuthenticatedApp = () => {
     <>
       <Grid container>
         <Grid item sm>
-         <Box>
+          <Box>
             <Switch>
-              <Route 
-               path='/'
-               exact 
-               component = {() => (<AuthenticatedWelcomePage/>)}/>
+              <Route
+                path='/'
+                exact
+                component={() => (<AuthenticatedWelcomePage />)}
+              />
               <Route
                 path='/test'
                 exact
                 component={() => (
-                <h1> Hello </h1> 
+                  <h1> Hello </h1>
                 )}
               />
               <Route
-                 path='/clinics'
-                 exact 
-                 component = { 
+                path='/clinics'
+                exact
+                component={
                    () => (
-                     <ClinicViewer/>
+                     <ClinicViewer />
                    )
-                 }/>
+                 }
+              />
               <Route
-                 path='/doctors'
-                 exact 
-                 component = { 
+                path='/doctors'
+                exact
+                component={
                    () => (
-                     <DoctorViewer/>
+                     <DoctorViewer />
                    )
                  }/>
               <Route
