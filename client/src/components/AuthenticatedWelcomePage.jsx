@@ -1,20 +1,19 @@
 import React from 'react';
 import createHistory from 'history/createBrowserHistory';
-import { Grid, Button } from '@material-ui/core';
-import TextResponse from './common/TextResponse';
+import { Grid } from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import TextResponse from './common/TextResponse';
 
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
-    margin: '40px'
+    margin: '40px',
   },
   media: {
     height: 140,
@@ -22,28 +21,30 @@ const useStyles = makeStyles({
 });
 
 const AuthenticatedWelcomePage = () => {
-    const history = createHistory({forceRefresh:true});
-    const classes = useStyles();
-    return ( 
+  const history = createHistory({ forceRefresh: true });
+  const classes = useStyles();
+  return (
     <Grid container>
-        <Grid item xs={12}>
-            <TextResponse heading='Welcome to clinic recommender' body='Here are a few things you can do: '/>
-        </Grid> 
+      <Grid item xs={12}>
+        <TextResponse heading='Welcome to clinic recommender' body='Here are a few things you can do: ' />
+      </Grid>
       {/* <Grid item xs={6}>
-        <Button variant='contained' color='primary' onClick={()=> history.push('/clinics')}> Find clinics near you </Button>
+        <Button variant='contained' color='primary' onClick={
+          ()=> history.push('/clinics')}> Find clinics near you </Button>
       </Grid> */}
       {/* <Grid item xs={6}>
-        <Button variant='contained' color='primary' onClick={()=> history.push('/doctors')}> Find doctor ratings </Button>
+        <Button variant='contained' color='primary' onClick={
+          ()=> history.push('/doctors')}> Find doctor ratings </Button>
       </Grid> */}
       <Grid>
         <Card className={classes.root}>
-          <CardActionArea onClick={()=> history.push('/clinics')}>
+          <CardActionArea onClick={() => history.push('/clinics')}>
             <CardMedia
               className={classes.media}
-              image="https://blogs.ubc.ca/theedventure/files/2015/12/de1_0506.jpg"
+              image='https://blogs.ubc.ca/theedventure/files/2015/12/de1_0506.jpg'
             />
             <CardContent>
-              <Typography gutterBottom variant="h6" component="h2">
+              <Typography gutterBottom variant='h6' component='h2'>
                 FIND CLINICS NEAR YOU
               </Typography>
             </CardContent>
@@ -52,20 +53,21 @@ const AuthenticatedWelcomePage = () => {
       </Grid>
       <Grid>
         <Card className={classes.root}>
-          <CardActionArea onClick={()=> history.push('/doctors')}>
+          <CardActionArea onClick={() => history.push('/doctors')}>
             <CardMedia
               className={classes.media}
-              image="https://www.hr.ubc.ca/benefits-fyi/files/2013/03/find-a-doctor-483x328.jpg"
+              image='https://www.hr.ubc.ca/benefits-fyi/files/2013/03/find-a-doctor-483x328.jpg'
             />
             <CardContent>
-              <Typography gutterBottom variant="h6" component="h2">
+              <Typography gutterBottom variant='h6' component='h2'>
                 FIND DOCTOR RATINGS
               </Typography>
             </CardContent>
           </CardActionArea>
         </Card>
       </Grid>
-    </Grid> );
-}
- 
+    </Grid>
+  );
+};
+
 export default AuthenticatedWelcomePage;

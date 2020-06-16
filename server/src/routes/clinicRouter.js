@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {CLINIC_ROUTE} = require('../utils/constants');
+const { CLINIC_ROUTE } = require('../utils/constants');
 const getClinicDetailsInCity = require('./clinics/getClinicDetailsInCity');
 const getDynamicClincDetails = require('./clinics/getDynamicClinicDetails');
 const getClinicsWithAllSpecialities = require('./clinics/getClinicsWithAllSpecialities');

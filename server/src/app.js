@@ -16,18 +16,18 @@ app.use(express.json());
 
 const { BASE_ROUTE } = require('./utils/constants');
 const userRouter = require('./routes/userRouter');
-const clinicRouter = require('./routes/clinicRouter')
-const avgRatingRouter = require('./routes/avgRatingRouter')
+const clinicRouter = require('./routes/clinicRouter');
+const avgRatingRouter = require('./routes/avgRatingRouter');
 
 app.use(BASE_ROUTE, userRouter);
 app.use(BASE_ROUTE, clinicRouter);
 app.use(BASE_ROUTE, avgRatingRouter);
 
 if (ENVIRONMENT === 'production' || ENVIRONMENT === 'dev') {
-  app.use('/static', express.static(path.join(`${__dirname}/../../`, 'client/build/static' )));
+  app.use('/static', express.static(path.join(`${__dirname}/../../`, 'client/build/static')));
 
   app.get('*', (req, res) => {
-      res.sendFile(path.join(`${__dirname}/../../`, 'client', 'build', 'index.html'));
+    res.sendFile(path.join(`${__dirname}/../../`, 'client', 'build', 'index.html'));
   });
 }
 

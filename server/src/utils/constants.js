@@ -11,5 +11,5 @@ module.exports = {
   UPLOAD_ROUTE,
   ENVIRONMENT,
   CLINIC_ROUTE,
-  DOCTOR_ROUTE
+  DOCTOR_ROUTE,
 };

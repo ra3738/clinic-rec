@@ -8,7 +8,7 @@ app.listen(port, async () => {
   try {
     await sqlClient.connect();
     logger.info(`Server is running on port: ${port}`);
-  } catch(err) {
+  } catch (err) {
     logger.info(`Error starting server: ${err}`);
   }
 });
