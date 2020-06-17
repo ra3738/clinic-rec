@@ -3,7 +3,8 @@ import { Button, Grid, ListItem, List, ListItemText, Divider, TextField } from '
 import { useSelector, useDispatch } from 'react-redux';
 import TextResponse from './common/TextResponse';
 import LoadingMessage from './common/LoadingMesage';
-import { getClinics } from '../redux/actions/clinicActions';
+import { getClinics, getProjectedClinicDetails } from '../redux/actions/clinicActions';
+import CheckBoxes from './common/CheckBoxes';
 
 const ClinicViewer = () => {
   const clinicsState = useSelector(state => state.clinics);
@@ -14,8 +15,11 @@ const ClinicViewer = () => {
       if (!clinicsState) {
         return <TextResponse heading='No clinics found.' body='Please contact administrator' />;
       }
-      getClinics(dispatch, cityName);
-      setCityName('');
+      if (clinicsState.selectedCols.includes('all')) {
+        getClinics(dispatch, cityName);
+      } else {
+        getProjectedClinicDetails(dispatch, clinicsState.selectedCols, cityName);
+      }
     }
     return <LoadingMessage heading='Please wait' body='Loading clinics...' />;
   };
@@ -41,7 +45,10 @@ const ClinicViewer = () => {
       <Grid container spacing={3} alignContent='center'>
         <Grid item xs={12}>
           <TextField placeholder='City name' onChange={onChangeCityName} />
-          <Button color='primary' onClick={getClinicsOnClick}> Search </Button>
+          <Button color='primary' onClick={getClinicsOnClick}> Filtered Search </Button>
+        </Grid>
+        <Grid item xs={12}>
+          <CheckBoxes cityName={cityName} />
         </Grid>
       </Grid>
       <Grid container spacing={3}>
@@ -54,8 +61,8 @@ const ClinicViewer = () => {
                <ListItem button key={`${clinic.id}`}>
                  <ListItemText
                    key={`${clinic.id}`}
-                   primary={`${clinic.name} | Operating hours: ${clinic.opening_time} - ${clinic.closing_time} |
-                 Days open: ${clinic.days_open} | Postal code: ${clinic.postal_code} | City: ${clinic.city} `}
+                   primary={`${(clinic.name) ? `Name: ${clinic.name}` : ''} ${(clinic.opening_time) ? `| Opening time: ${clinic.opening_time}` : ''} ${(clinic.closing_time) ? `|  Closing time:${clinic.closing_time}` : ''} ${(clinic.days_open) ? ` |
+                   Days open: ${clinic.days_open}` : ''} ${(clinic.postal_code) ? ` | Postal code:${clinic.postal_code}` : ''} `}
                  />
                </ListItem>
                <Divider />
