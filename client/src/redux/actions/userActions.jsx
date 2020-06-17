@@ -62,3 +62,18 @@ export const getAvgRating = async (dispatch, patientid) => {
       },
     );
 };
+
+export const deleteAccount = async (dispatch, patientid) => {
+  dispatch(requestUsers(dispatch));
+
+  axios.get(`/api/users/deletePatientAccount/${patientid}`)
+    .then(
+      response => {
+        dispatch(receiveUsers(response));
+      },
+      error => {
+        console.log(`Error fetching bills for :${patientid}`, error);
+        dispatch(invalidateUsers());
+      },
+    );
+};
