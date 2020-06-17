@@ -38,7 +38,7 @@ const AuthenticatedWelcomePage = () => {
               image='https://blogs.ubc.ca/theedventure/files/2015/12/de1_0506.jpg'
             />
             <CardContent>
-              <Typography gutterBottom align='center' variant='h6' component='h2'>
+              <Typography gutterBottom variant='h6' component='h2' align='center'>
                 FIND CLINICS NEAR YOU
               </Typography>
             </CardContent>
@@ -53,7 +53,7 @@ const AuthenticatedWelcomePage = () => {
               image='https://www.hr.ubc.ca/benefits-fyi/files/2013/03/find-a-doctor-483x328.jpg'
             />
             <CardContent>
-              <Typography gutterBottom align='center' variant='h6' component='h2'>
+              <Typography gutterBottom variant='h6' component='h2' align='center'>
                 FIND DOCTOR RATINGS
               </Typography>
             </CardContent>
@@ -71,6 +71,22 @@ const AuthenticatedWelcomePage = () => {
               <Typography gutterBottom align='center' variant='h6' component='h2'>
                 🌟FIND ALL STAR CLINICS 🌟
               </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      </Grid>
+      <Grid item xs={3}>
+        <Card className={classes.root}>
+          <CardActionArea onClick={() => history.push('/bills')}>
+              <CardContent>
+                <Typography gutterBottom variant='h1' component='h2' align='center'>
+                  💵
+                </Typography>
+              </CardContent>
+              <CardContent>
+                <Typography gutterBottom variant='h6' component='h2' align='center'>
+                  FIND BILL HISTORY
+                </Typography>
             </CardContent>
           </CardActionArea>
         </Card>

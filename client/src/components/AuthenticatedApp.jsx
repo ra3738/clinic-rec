@@ -9,45 +9,46 @@ import LoadingMessage from './common/LoadingMesage';
 import { URN_CLIENT } from '../constants/config';
 import ClinicViewer from './ClinicViewer';
 import DoctorViewer from './DoctorViewer';
+import UserViewer from './UserViewer';
 import AllStarClinicViewer from './AllStarClinicViewer';
 import AuthenticatedWelcomePage from './AuthenticatedWelcomePage';
 
 const AuthenticatedApp = () => {
-  const dispatch = useDispatch();
-  const { getTokenSilently, user } = useAuth0();
-  const patientState = useSelector(state => state.patients);
+  // const dispatch = useDispatch();
+  // const { getTokenSilently, user } = useAuth0();
+  // const patientState = useSelector(state => state.patients);
 
-  if (patientState.id === null && !patientState.isFetching) {
-    if (!user) {
-      return <TextResponse heading='No user found.' body='Please contact administrator' />;
-    }
-    const namespace = URN_CLIENT;
-    const newPatient = user[`${namespace}/newUser`];
-    const auth0Prefix = 'auth0|';
+  // if (patientState.id === null && !patientState.isFetching) {
+  //   if (!user) {
+  //     return <TextResponse heading='No user found.' body='Please contact administrator' />;
+  //   }
+  //   const namespace = URN_CLIENT;
+  //   const newPatient = user[`${namespace}/newUser`];
+  //   const auth0Prefix = 'auth0|';
 
-    if (newPatient) {
-      createPatient(
-        dispatch,
-        user.sub.substring(auth0Prefix.length),
-        user.nickname,
-        getTokenSilently,
-      );
-    } else {
-      getPatient(
-        dispatch,
-        user.sub.substring(auth0Prefix.length),
-        getTokenSilently,
-      );
-    }
+  //   if (newPatient) {
+  //     createPatient(
+  //       dispatch,
+  //       user.sub.substring(auth0Prefix.length),
+  //       user.nickname,
+  //       getTokenSilently,
+  //     );
+  //   } else {
+  //     getPatient(
+  //       dispatch,
+  //       user.sub.substring(auth0Prefix.length),
+  //       getTokenSilently,
+  //     );
+  //   }
 
-    return <LoadingMessage heading='Please wait' body='Loading patient...' />;
-  }
-  if (patientState.didInvalidate) {
-    return <TextResponse heading='Error getting user info from server' body='Please contact administrator.' />;
-  }
-  if (patientState.isFetching) {
-    return <LoadingMessage heading='Please wait' body='Loading patient...' />;
-  }
+  //   return <LoadingMessage heading='Please wait' body='Loading patient...' />;
+  // }
+  // if (patientState.didInvalidate) {
+  //   return <TextResponse heading='Error getting user info from server' body='Please contact administrator.' />;
+  // }
+  // if (patientState.isFetching) {
+  //   return <LoadingMessage heading='Please wait' body='Loading patient...' />;
+  // }
   return (
     <>
       <Grid container>
@@ -83,6 +84,15 @@ const AuthenticatedApp = () => {
                      <DoctorViewer />
                    )
                  }
+              />
+              <Route
+                path='/bills'
+                exact
+                component={
+                   () => (
+                     <UserViewer />
+                   )
+                }
               />
               <Route
                 path='/specialclinics'
