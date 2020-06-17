@@ -3,7 +3,6 @@ const USER_ROUTE = '/users';
 const UPLOAD_ROUTE = '/uploads';
 const CLINIC_ROUTE = '/clinic';
 const DOCTOR_ROUTE = '/doctor';
-const PATIENT_ROUTE = '/patient';
 const ENVIRONMENT = process.env.NODE_ENV || 'development';
 
 module.exports = {
@@ -13,5 +12,4 @@ module.exports = {
   ENVIRONMENT,
   CLINIC_ROUTE,
   DOCTOR_ROUTE,
-  PATIENT_ROUTE,
 };

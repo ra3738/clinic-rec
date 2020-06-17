@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const {PATIENT_ROUTE} = require('../utils/constants');
-const deletePatientAccount = require('./patients/deletePatientAccount');
+const {USER_ROUTE} = require('../utils/constants');
+const deletePatientAccount = require('./user/deletePatientAccount');
 
-router.use(PATIENT_ROUTE, deletePatientAccount);
+router.use(USER_ROUTE, deletePatientAccount);
 
 module.exports = router; 
