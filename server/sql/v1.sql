@@ -74,11 +74,11 @@ CREATE TABLE Patient(
 );
 INSERT INTO Patient
 VALUES
-  ('0001', 1, 'roman@akhtariev.ca', 'MyTAIsTheBest', 'Roman Akhtariev', 'https://google.com/images/roman'),
-  ('0002', 2, 'james@bond.ca', 'triple0777', 'James Bond', 'https://google.com/images/bond'),
-  ('0003', 3, 'donald@trump.us', 'buildThatWall', 'Donald Trump', 'https://google.com/images/trump'),
-  ('0004', 4, 'bill@gates.com', 'microsoft', 'Bill', 'https://google.com/images/gates'),
-  ('0005', 5, 'jb@ubc.ca', 'Baaaby', 'Justin Bieber', 'https://google.com/images/bieber');
+  ('0001', 1, 'roman@akhtariev.ca', 'Roman Akhtariev', 'https://google.com/images/roman'),
+  ('0002', 2, 'james@bond.ca', 'James Bond', 'https://google.com/images/bond'),
+  ('0003', 3, 'donald@trump.us', 'Donald Trump', 'https://google.com/images/trump'),
+  ('0004', 4, 'bill@gates.com', 'Bill', 'https://google.com/images/gates'),
+  ('0005', 5, 'jb@ubc.ca', 'Justin Bieber', 'https://google.com/images/bieber');
   
 CREATE TABLE ClinicLocation (
 postal_code CHAR(7) PRIMARY KEY, 
