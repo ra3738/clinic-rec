@@ -78,15 +78,15 @@ const AuthenticatedWelcomePage = () => {
       <Grid item xs={3}>
         <Card className={classes.root}>
           <CardActionArea onClick={() => history.push('/bills')}>
-              <CardContent>
-                <Typography gutterBottom variant='h1' component='h2' align='center'>
-                  💵
-                </Typography>
-              </CardContent>
-              <CardContent>
-                <Typography gutterBottom variant='h6' component='h2' align='center'>
-                  FIND BILL HISTORY
-                </Typography>
+            <CardContent>
+              <Typography gutterBottom variant='h1' component='h2' align='center'>
+                💵
+              </Typography>
+            </CardContent>
+            <CardContent>
+              <Typography gutterBottom variant='h6' component='h2' align='center'>
+                FIND BILL HISTORY
+              </Typography>
             </CardContent>
           </CardActionArea>
         </Card>
