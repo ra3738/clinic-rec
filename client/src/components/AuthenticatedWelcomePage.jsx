@@ -80,7 +80,7 @@ const AuthenticatedWelcomePage = () => {
           <CardActionArea onClick={() => history.push('/bills')}>
               <CardContent>
                 <Typography gutterBottom variant='h1' component='h2' align='center'>
-                  $
+                  💵
                 </Typography>
               </CardContent>
               <CardContent>
