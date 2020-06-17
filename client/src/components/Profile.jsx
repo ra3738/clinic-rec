@@ -61,7 +61,7 @@ export default function Profile() {
       patientState.id,
       info.fullName,
       { guardianName: info.guardianName, height: info.height, weight: info.weight },
-      info.profilePicUrl, 
+      info.profilePicUrl,
       getTokenSilently,
     );
     if (patientState.medHistory.id) {
@@ -100,7 +100,7 @@ export default function Profile() {
               <Typography className={classes.heading} variant='h6'>{`Full Name: ${patientState.fullName}`}</Typography>
             </ListItem>
             )}
-             {patientState.fullName && (
+            {patientState.profile_picture_url && (
             <ListItem key={1} role={undefined} dense>
               <Typography className={classes.heading} variant='h6'>{`Profile Picture URL: ${patientState.profile_picture_url}`}</Typography>
             </ListItem>
