@@ -16,7 +16,7 @@ import AuthenticatedWelcomePage from './AuthenticatedWelcomePage';
 const AuthenticatedApp = () => {
   const dispatch = useDispatch();
   const { getTokenSilently, user } = useAuth0();
-  const patientState = useSelector(state => state.patients);
+  const patientState = useSelector(state => state.patient);
 
   if (patientState.id === null && !patientState.isFetching) {
     if (!user) {
@@ -49,6 +49,11 @@ const AuthenticatedApp = () => {
   if (patientState.isFetching) {
     return <LoadingMessage heading='Please wait' body='Loading patient...' />;
   }
+
+  if (patientState.triggerUpdate) {
+    return <TextResponse heading='Trigerring update' body='work in progress...' />;
+  }
+
   return (
     <>
       <Grid container>
