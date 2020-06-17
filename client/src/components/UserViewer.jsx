@@ -37,7 +37,7 @@ const UserViewer = () => {
     <div>
       <Grid container spacing={3} alignContent='center'>
         <Grid item xs={12}>
-          <TextResponse heading='Find user ratings by userid' />
+          <TextResponse heading='Bill History' />
         </Grid>
       </Grid>
       <Grid container spacing={3} alignContent='center'>
@@ -53,7 +53,7 @@ const UserViewer = () => {
             {usersState.responseData.map(user => (
               <>
                 <ListItem button key={`${user.bill_id}`}>
-                  <ListItemText key={`${user.bill_id}`} primary={`${user.bill_id} | Rating: ${user.amount}`} />
+                  <ListItemText key={`${user.bill_id}`} primary={`${user.bill_id} | Amount: ${user.amount}`} />
                 </ListItem>
                 <Divider />
               </>

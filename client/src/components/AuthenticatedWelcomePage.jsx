@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/accessible-emoji */
 import React from 'react';
 import createHistory from 'history/createBrowserHistory';
 import { Grid } from '@material-ui/core';
@@ -13,6 +14,7 @@ import TextResponse from './common/TextResponse';
 const useStyles = makeStyles({
   root: {
     width: 280,
+    height: 280,
     margin: '40px',
   },
   media: {
@@ -60,16 +62,31 @@ const AuthenticatedWelcomePage = () => {
       </Grid>
       <Grid item xs={3}>
         <Card className={classes.root}>
-          <CardActionArea onClick={() => history.push('/users')}>
+          <CardActionArea onClick={() => history.push('/specialclinics')}>
+            <CardMedia
+              className={classes.media}
+              image='https://image.freepik.com/free-vector/start_53876-25533.jpg'
+            />
             <CardContent>
-              <Typography gutterBottom variant='h1' component='h2' align='center'>
-                $
+              <Typography gutterBottom align='center' variant='h6' component='h2'>
+                🌟FIND ALL STAR CLINICS 🌟
               </Typography>
             </CardContent>
-            <CardContent>
-              <Typography gutterBottom variant='h6' component='h2' align='center'>
-                FIND BILL HISTORY
-              </Typography>
+          </CardActionArea>
+        </Card>
+      </Grid>
+      <Grid item xs={3}>
+        <Card className={classes.root}>
+          <CardActionArea onClick={() => history.push('/bills')}>
+              <CardContent>
+                <Typography gutterBottom variant='h1' component='h2' align='center'>
+                  $
+                </Typography>
+              </CardContent>
+              <CardContent>
+                <Typography gutterBottom variant='h6' component='h2' align='center'>
+                  FIND BILL HISTORY
+                </Typography>
             </CardContent>
           </CardActionArea>
         </Card>
