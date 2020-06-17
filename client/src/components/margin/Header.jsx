@@ -90,6 +90,9 @@ const Header = () => {
       <MenuItem className={classes.menuItem} onClick={handleLogOut}>
         Log Out
       </MenuItem>
+      <MenuItem className={classes.menuItem} onClick={handleLogOut}>
+        Delete Account
+      </MenuItem>
     </Menu>
   );
 
