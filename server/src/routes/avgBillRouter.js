@@ -1,7 +1,10 @@
+/* eslint-disable import/no-unresolved */
 const router = require('express').Router();
-const {USER_ROUTE} = require('../utils/constants');
-const getAvgUserBill = require('./user/getAvgUserBill');
+const { BILL_ROUTE } = require('../utils/constants');
+const getBills = require('./user/getBills');
+const avgBillForPatient = require('./user/avgBillForPatient');
 
-router.use(USER_ROUTE, getAvgUserBill);
+router.use(BILL_ROUTE, getBills);
+router.use(BILL_ROUTE, avgBillForPatient);
 
 module.exports = router;
