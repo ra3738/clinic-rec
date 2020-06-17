@@ -117,6 +117,7 @@ const Header = () => {
               <AccountCircleIcon className={classes.accountIcon} />
             </IconButton>
           )}
+
         </Toolbar>
       </AppBar>
       {renderMenu}
