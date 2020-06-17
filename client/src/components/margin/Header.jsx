@@ -3,11 +3,8 @@ import { Link } from 'react-router-dom';
 import { Typography, AppBar, Toolbar, Button, IconButton, Menu, MenuItem } from '@material-ui/core';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { makeStyles } from '@material-ui/core/styles';
-import createHistory from 'history/createBrowserHistory';
 import { useAuth0 } from '../../authentication/react-auth0-spa';
 import colors from '../../constants/colors';
-
-const history = createHistory({ forceRefresh: true });
 
 const useStyles = makeStyles(theme => ({
   bar: {
@@ -106,9 +103,6 @@ const Header = () => {
               Clinic Recommender
             </Link>
           </Typography>
-          {isAuthenticated && (
-            <Button color='primary' onClick={() => history.push('/clinics')}>Find Clinics </Button>
-          )}
           {!isAuthenticated && (
             <Button
               className={classes.login}
