@@ -25,10 +25,10 @@ const AuthenticatedWelcomePage = () => {
   const classes = useStyles();
   return (
     <Grid container>
-        <Grid item xs={12}>
-          <TextResponse heading='Welcome to clinic recommender' body='Here are a few things you can do: '/>
-        </Grid> 
-      <Grid>
+      <Grid item xs={12}>
+        <TextResponse heading='Welcome to clinic recommender' body='Here are a few things you can do: '/>
+      </Grid> 
+      <Grid item xs={3}>
         <Card className={classes.root}>
           <CardActionArea onClick={() => history.push('/clinics')}>
             <CardMedia
@@ -43,7 +43,7 @@ const AuthenticatedWelcomePage = () => {
           </CardActionArea>
         </Card>
       </Grid>
-      <Grid>
+      <Grid item xs={3}>
         <Card className={classes.root}>
           <CardActionArea onClick={() => history.push('/doctors')}>
             <CardMedia
@@ -58,7 +58,7 @@ const AuthenticatedWelcomePage = () => {
           </CardActionArea>
         </Card>
       </Grid>
-      <Grid>
+      <Grid item xs={3}>
         <Card className={classes.root}>
           <CardActionArea onClick={()=> history.push('/users')}>
           <CardContent>
