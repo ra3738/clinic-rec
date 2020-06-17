@@ -8,22 +8,16 @@ import { getUsers } from '../redux/actions/userActions';
 
 const UserViewer = () => {
   const usersState = useSelector(state => state.users);
+  const patientState = useSelector(state => state.patients)
   const dispatch = useDispatch();
-  const [userid, setUserid] = React.useState('');
-  // eslint-disable-next-line consistent-return
-  const getUsersOnClick = () => {
-    if (!usersState.isFetchingUsers) {
-      if (!usersState) {
-        return <TextResponse heading='No users found.' body='Please contact administrator' />;
-      }
-      getUsers(dispatch, userid);
-      setUserid('');
-      return <LoadingMessage heading='Please wait' body='Loading users...' />;
+
+  if (!usersState.isFetchingUsers && usersState.responseData === null) {
+    if (!usersState) {
+      return <TextResponse heading='No users found.' body='Please contact administrator' />;
     }
-  };
-  const onChangeUserid = e => {
-    setUserid(e.target.value);
-  };
+    getUsers(dispatch, patientState.id);
+    return <LoadingMessage heading='Please wait' body='Loading users...' />;
+  }
 
   if (usersState.didInvalidateUsers) {
     return <TextResponse heading='Error getting users info from server' body='Please contact administrator.' />;
@@ -38,12 +32,6 @@ const UserViewer = () => {
       <Grid container spacing={3} alignContent='center'>
         <Grid item xs={12}>
           <TextResponse heading='Bill History' />
-        </Grid>
-      </Grid>
-      <Grid container spacing={3} alignContent='center'>
-        <Grid item xs={12}>
-          <TextField placeholder='Userid' onChange={onChangeUserid} />
-          <Button color='primary' onClick={getUsersOnClick}> Search </Button>
         </Grid>
       </Grid>
       <Grid container spacing={3}>
