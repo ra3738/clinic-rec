@@ -19,11 +19,13 @@ const userRouter = require('./routes/userRouter');
 const clinicRouter = require('./routes/clinicRouter');
 const avgRatingRouter = require('./routes/avgRatingRouter');
 const avgBillRouter = require('./routes/avgBillRouter');
+const deletePatientRouter = require('./routes/deletePatientRouter');
 
 app.use(BASE_ROUTE, userRouter);
 app.use(BASE_ROUTE, clinicRouter);
 app.use(BASE_ROUTE, avgRatingRouter);
 app.use(BASE_ROUTE, avgBillRouter);
+app.use(BASE_ROUTE, deletePatientRouter);
 
 if (ENVIRONMENT === 'production' || ENVIRONMENT === 'dev') {
   app.use('/static', express.static(path.join(`${__dirname}/../../`, 'client/build/static')));
