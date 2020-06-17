@@ -7,6 +7,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import createHistory from 'history/createBrowserHistory';
 import { useAuth0 } from '../../authentication/react-auth0-spa';
 import colors from '../../constants/colors';
+import { deleteAccount } from '../../redux/actions/userActions';
+import { useSelector, useDispatch } from 'react-redux';
 
 const history = createHistory({ forceRefresh: true });
 
@@ -73,6 +75,15 @@ const Header = () => {
     logout();
   };
 
+  const patientState = useSelector(state => state.patient);
+  const dispatch = useDispatch();
+
+  const getDoctorsOnClick = () => {
+    deleteAccount(dispatch, patientState.id);
+    handleMenuClose();
+    logout();
+  };
+
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
@@ -89,6 +100,9 @@ const Header = () => {
       </Link>
       <MenuItem className={classes.menuItem} onClick={handleLogOut}>
         Log Out
+      </MenuItem>
+      <MenuItem className={classes.menuItem} onClick={getDoctorsOnClick}>
+        Delete Account
       </MenuItem>
     </Menu>
   );
