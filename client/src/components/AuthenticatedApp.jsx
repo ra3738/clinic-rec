@@ -82,15 +82,17 @@ const AuthenticatedApp = () => {
                    () => (
                      <DoctorViewer />
                    )
-                 }/>
+                 }
+              />
               <Route
-                 path='/users'
-                 exact 
-                 component = { 
+                path='/users'
+                exact
+                component={
                    () => (
-                     <UserViewer/>
+                     <UserViewer />
                    )
-                 }/>
+                 }
+              />
             </Switch>
           </Box>
         </Grid>

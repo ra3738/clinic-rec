@@ -13,7 +13,7 @@ import TextResponse from './common/TextResponse';
 const useStyles = makeStyles({
   root: {
     width: 280,
-    margin: '40px'
+    margin: '40px',
   },
   media: {
     height: 180,
@@ -26,8 +26,8 @@ const AuthenticatedWelcomePage = () => {
   return (
     <Grid container>
       <Grid item xs={12}>
-        <TextResponse heading='Welcome to clinic recommender' body='Here are a few things you can do: '/>
-      </Grid> 
+        <TextResponse heading='Welcome to clinic recommender' body='Here are a few things you can do: ' />
+      </Grid>
       <Grid item xs={3}>
         <Card className={classes.root}>
           <CardActionArea onClick={() => history.push('/clinics')}>
@@ -36,7 +36,7 @@ const AuthenticatedWelcomePage = () => {
               image='https://blogs.ubc.ca/theedventure/files/2015/12/de1_0506.jpg'
             />
             <CardContent>
-              <Typography gutterBottom variant="h6" component="h2" align="center">
+              <Typography gutterBottom variant='h6' component='h2' align='center'>
                 FIND CLINICS NEAR YOU
               </Typography>
             </CardContent>
@@ -51,7 +51,7 @@ const AuthenticatedWelcomePage = () => {
               image='https://www.hr.ubc.ca/benefits-fyi/files/2013/03/find-a-doctor-483x328.jpg'
             />
             <CardContent>
-              <Typography gutterBottom variant="h6" component="h2" align="center">
+              <Typography gutterBottom variant='h6' component='h2' align='center'>
                 FIND DOCTOR RATINGS
               </Typography>
             </CardContent>
@@ -60,21 +60,22 @@ const AuthenticatedWelcomePage = () => {
       </Grid>
       <Grid item xs={3}>
         <Card className={classes.root}>
-          <CardActionArea onClick={()=> history.push('/users')}>
-          <CardContent>
-              <Typography gutterBottom variant="h1" component="h2" align="center">
+          <CardActionArea onClick={() => history.push('/users')}>
+            <CardContent>
+              <Typography gutterBottom variant='h1' component='h2' align='center'>
                 $
               </Typography>
             </CardContent>
             <CardContent>
-              <Typography gutterBottom variant="h6" component="h2" align="center">
+              <Typography gutterBottom variant='h6' component='h2' align='center'>
                 FIND BILL HISTORY
               </Typography>
             </CardContent>
           </CardActionArea>
         </Card>
       </Grid>
-    </Grid> );
-}
- 
+    </Grid>
+  );
+};
+
 export default AuthenticatedWelcomePage;
