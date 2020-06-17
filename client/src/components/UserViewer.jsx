@@ -8,7 +8,7 @@ import { getUsers } from '../redux/actions/userActions';
 
 const UserViewer = () => {
   const usersState = useSelector(state => state.users);
-  const patientState = useSelector(state => state.patients)
+  const patientState = useSelector(state => state.patient)
   const dispatch = useDispatch();
 
   if (!usersState.isFetchingUsers && usersState.responseData === null) {
